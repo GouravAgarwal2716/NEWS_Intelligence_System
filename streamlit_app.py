@@ -118,18 +118,15 @@ with st.sidebar:
     st.markdown("### 🚀 Quick Test Bench")
     st.caption("Load a sample article to see the system in action:")
     
-    selected_sample = st.selectbox("Select a Topic", ["Choose a sample..."] + list(SAMPLE_ARTICLES.keys()))
+    selected_sample = st.selectbox("Select a Topic", list(SAMPLE_ARTICLES.keys()), key="sample_topic_select")
     
     if st.button("Load Selected Sample"):
-        if selected_sample != "Choose a sample...":
-            st.session_state.article_text = SAMPLE_ARTICLES[selected_sample]
+        st.session_state.main_input_area = SAMPLE_ARTICLES[selected_sample]
+        st.rerun()
 
 # --- MAIN INTERFACE ---
 st.markdown("<h1 class='main-title'>News Intelligence</h1>", unsafe_allow_html=True)
 st.markdown("<p class='sub-title'>State-of-the-art News Classification & Summarization Engine</p>", unsafe_allow_html=True)
-
-if 'article_text' not in st.session_state:
-    st.session_state.article_text = ""
 
 # Input Layout
 col_main, col_stats = st.columns([1.8, 1.2], gap="large")
@@ -138,7 +135,6 @@ with col_main:
     st.markdown("### 📰 Input Feed")
     article_input = st.text_area(
         "Enter news content or title + description:",
-        value=st.session_state.article_text,
         height=320,
         placeholder="Paste your news article here...",
         key="main_input_area"

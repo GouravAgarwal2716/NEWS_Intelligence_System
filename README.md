@@ -2,6 +2,8 @@
 
 A smart NLP pipeline for news article classification and extractive summarization.
 
+**Live Demo:** [newsintelligencesystem.streamlit.app](https://newsintelligencesystem-eprgm4jr5qyogdqhqdmr8t.streamlit.app/)
+
 ## Features
 - **Preprocessing**: Robust text cleaning, tokenization, stopword removal, and lemmatization.
 - **Classification**: TF-IDF + Logistic Regression model trained on 120,000 news articles.
